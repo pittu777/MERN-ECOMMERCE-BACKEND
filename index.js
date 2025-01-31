@@ -21,10 +21,26 @@ const server=express()
 
 // database connection
 connectToDB()
+const allowedOrigins = [
+    'http://localhost:3000', // Local Development
+    'https://mern-e-commerce-frontend-gamma.vercel.app', // Production Frontend
+];
 
-
+const corsOptions = {
+    origin: (origin, callback) => {
+        if (allowedOrigins.includes(origin) || !origin) {  // !origin handles non-browser requests (like Postman)
+            callback(null, true);
+        } else {
+            callback(new Error('CORS policy error'));
+        }
+    },
+    credentials: true,
+    exposedHeaders: ['X-Total-Count'],
+    methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+};
+server.use(cors(corsOptions));
 // middlewares
-server.use(cors({origin:process.env.ORIGIN,credentials:true,exposedHeaders:['X-Total-Count'],methods:['GET','POST','PATCH','DELETE']}))
+// server.use(cors({origin:process.env.ORIGIN,credentials:true,exposedHeaders:['X-Total-Count'],methods:['GET','POST','PATCH','DELETE']}))
 server.use(express.json())
 server.use(cookieParser())
 server.use(morgan("tiny"))
