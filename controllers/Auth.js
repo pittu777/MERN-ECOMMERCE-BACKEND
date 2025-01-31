@@ -187,7 +187,7 @@ exports.resendOtp = async (req, res) => {
         try {
             await sendMail(
                 existingUser.email, 
-                "OTP Verification", 
+                // "OTP Verification", 
                 // `Your OTP is: <b>${otp}</b>.`
                 `OTP Verification for Your MERN-AUTH-REDUX-TOOLKIT Account`,`Your One-Time Password (OTP) for account verification is: 
                 <b>${otp}</b>.</br>Do not share this OTP with anyone for security reasons`
