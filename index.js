@@ -22,13 +22,13 @@ const server=express()
 // database connection
 connectToDB()
 const allowedOrigins = [
-    'http://localhost:3000', // Local Development
-    'https://mern-e-commerce-frontend-gamma.vercel.app', // Production Frontend
+    'http://localhost:3000',
+    'https://mern-e-commerce-frontend-gamma.vercel.app', 
 ];
 
 const corsOptions = {
     origin: (origin, callback) => {
-        if (allowedOrigins.includes(origin) || !origin) {  // !origin handles non-browser requests (like Postman)
+        if (allowedOrigins.includes(origin) || !origin) {
             callback(null, true);
         } else {
             callback(new Error('CORS policy error'));
