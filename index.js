@@ -23,7 +23,7 @@ const server=express()
 connectToDB()
 const allowedOrigins = [
     'http://localhost:3000',
-    'https://mern-e-commerce-frontend-ochre.vercel.app/', 
+    'https://mern-e-commerce-frontend-ochre.vercel.app', 
 ];
 
 const corsOptions = {
